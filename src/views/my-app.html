@@ -28,11 +28,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/x-user-dropdown/x-user-dropdown.html">
 <link rel="import" href="../../bower_components/vaadin-icons/vaadin-icons.html">
 
+<link rel="import" href="x-organizers.html">
+
 <dom-module id="my-app">
 
   <template>
 
-    <style>
+    <style include="iron-flex iron-flex-alignment">
 
       :host {
         display: block;
@@ -57,11 +59,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 2em 4em;
         height: 200px;
         background: white;
+        align-items: center;
       }
 
       header.summary-bar h2 {
-        font-size: 2em;
+        font-size: 2.5em;
         font-weight: normal;
+        margin: 0;
+      }
+
+      header.summary-bar paper-icon-button {
+        border: solid 1px gray;
+        border-radius: 3px;
+        height: 50px;
+        width: 50px;
+        margin: 7px;
       }
 
       .menu {
@@ -97,6 +109,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       .drawer-list a.subroute {
         padding-left: 32px;
+      }
+
+      .divider {
+        border-left: solid 1px gray;
+        margin: 20px;
+        height: 80%;
       }
 
       x-user-dropdown::content .dropdown-content {
@@ -166,11 +184,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
         </app-header>
 
-        <header class="summary-bar">
-          <h2>
+        <header class="summary-bar layout horizontal wrap">
+          <h2 class="flex">
             <iron-icon icon="icons:event"></iron-icon>
             Event Name Lorem Ipsum
           </h2>
+          <x-organizers></x-organizers>
+          <div class="divider"></div>
+          <paper-icon-button alt="Delete event" icon="icons:delete"></paper-icon-button>
+          <paper-icon-button alt="Share event" icon="social:share"></paper-icon-button>
         </header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">

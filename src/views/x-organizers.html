@@ -1,0 +1,101 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="x-organizers">
+
+  <template>
+
+    <style>
+      :host {
+        display: block;
+      }
+
+      h1 {
+        font-size: 16px;
+        margin: 16px 0;
+        color: #212121;
+      }
+
+      .circle {
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background: #ddd;
+        line-height: 30px;
+        font-size: 18px;
+        color: #555;
+        text-align: center;
+        margin: 0 4px;
+        padding: 9px;
+        border: solid 1px gray;
+      }
+    </style>
+
+    <h1>Organizers</h1>
+    <template is="dom-repeat" items="[[_computeUsers(users)]]" as="user">
+      <div class="circle" title="[[user.firstName]] [[user.lastName]]">
+        [[_getInitials(user)]]
+      </div>
+    </template>
+    <template is="dom-if" if="[[_extraCount]]">
+      <div class="circle" title="[[_extraCount]] additional users">
+        +[[_extraCount]]
+      </div>
+    </template>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'x-organizers',
+      properties: {
+        /**
+         * Users to display
+         */
+        users: {
+          type: Array,
+          value: function() {
+            return [
+              {firstName: 'Jim', lastName: 'Bean'},
+              {firstName: 'Bill', lastName: 'Ford'},
+              {firstName: 'John', lastName: 'Hancock'},
+              {firstName: 'Jack', lastName: 'Beanstalk'},
+              {firstName: 'Tom', lastName: 'Jones'},
+              {firstName: 'Adam', lastName: 'West'},
+              {firstName: 'Oliver', lastName: 'Green'},
+            ];
+          }
+        },
+
+        _extraCount: {
+          type: Number,
+          computed: '_computeExtraUserCount(users)'
+        }
+      },
+
+      _maxUsersShown: 3,
+
+      _computeUsers: function(users) {
+        console.log('users', users, 'max', this._maxUsersShown, '_users', users && users.slice(0, this._maxUsersShown));
+        return users && users.slice(0, this._maxUsersShown);
+      },
+
+      _computeExtraUserCount: function(users) {
+        if (!users || users.length <= this._maxUsersShown) {
+          return;
+        }
+        return users.length - this._maxUsersShown;
+      },
+
+      _getInitials: function(user) {
+        var initials = [];
+        if (user.firstName) {
+          initials.push(user.firstName.trim()[0]);
+        }
+        if (user.lastName) {
+          initials.push(user.lastName.trim()[0]);
+        }
+        return initials.join('');
+      }
+    });
+  </script>
+</dom-module>
