@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
 
 <dom-module id="x-organizers">
 
@@ -33,13 +34,15 @@
 
     <h1>Organizers</h1>
     <template is="dom-repeat" items="[[_computeUsers(users)]]" as="user">
-      <div class="circle" title="[[user.firstName]] [[user.lastName]]">
+      <div class="circle">
         [[_getInitials(user)]]
+        <paper-tooltip>[[user.firstName]] [[user.lastName]]</paper-tooltip>
       </div>
     </template>
     <template is="dom-if" if="[[_extraCount]]">
-      <div class="circle" title="[[_extraCount]] additional users">
+      <div class="circle">
         +[[_extraCount]]
+        <paper-tooltip>[[_extraCount]] additional users</paper-tooltip>
       </div>
     </template>
   </template>
