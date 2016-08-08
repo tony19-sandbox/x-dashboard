@@ -52,6 +52,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --paper-icon-button-ink-color: white;
       }
 
+      header.summary-bar {
+        padding: 2em 4em;
+        height: 200px;
+        background: white;
+      }
+
+      header.summary-bar h2 {
+        font-size: 2em;
+        font-weight: normal;
+      }
+
       .menu {
         margin: 0 60px;
         text-transform: uppercase;
@@ -153,6 +164,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-button class="create-event" suffix>Create Event</paper-button>
           </app-toolbar>
         </app-header>
+
+        <header class="summary-bar">
+          <h2>
+            <iron-icon icon="icons:event"></iron-icon>
+            Event Name Lorem Ipsum
+          </h2>
+        </header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
           <x-dashboard name="dashboard"></x-dashboard>
