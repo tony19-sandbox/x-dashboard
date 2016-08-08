@@ -24,6 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-icons/social-icons.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/x-user-dropdown/x-user-dropdown.html">
 <link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
 
 <dom-module id="my-app">
@@ -64,7 +65,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding-left: 32px;
       }
 
+      x-user-dropdown::content .dropdown-content {
+        color: black;
+      }
 
+      paper-button.create-event {
+        --paper-button: {
+          background: orange;
+          padding: 7px;
+          margin: 0;
+          text-transform: none;
+        };
+      }
     </style>
 
     <app-location route="{{route}}"></app-location>
@@ -115,6 +127,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
             <div title>My App</div>
+            <x-user-dropdown src="https://randomuser.me/api/portraits/men/22.jpg" suffix></x-user-dropdown>
+            <paper-button class="create-event" suffix>Create Event</paper-button>
           </app-toolbar>
         </app-header>
 
