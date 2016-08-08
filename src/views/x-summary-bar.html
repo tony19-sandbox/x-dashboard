@@ -1,0 +1,84 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="x-organizers.html">
+
+<dom-module id="x-summary-bar">
+
+  <template>
+
+    <style include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+
+      .divider {
+        border-left: solid 1px lightgray;
+        margin: 20px;
+        height: 80%;
+      }
+
+      .summary-bar {
+        padding: 2em 4em;
+        height: 200px;
+        background: white;
+        align-items: center;
+      }
+
+      .summary-bar h2 {
+        font-size: 2.5em;
+        font-weight: normal;
+        margin: 0;
+      }
+
+      .summary-bar paper-icon-button {
+        border: solid 1px gray;
+        border-radius: 3px;
+        height: 50px;
+        width: 50px;
+        margin: 7px;
+        opacity: 0.5;
+      }
+
+      .summary-bar paper-icon-button:hover {
+        opacity: 1;
+      }
+    </style>
+
+    <section class="summary-bar layout horizontal wrap">
+      <h2 class="flex">
+        <iron-icon icon="icons:event"></iron-icon>
+        [[eventName]]
+      </h2>
+
+      <x-organizers></x-organizers>
+
+      <div class="divider"></div>
+
+      <paper-icon-button alt="Delete event" on-tap="_onDelete" icon="icons:delete"></paper-icon-button>
+      <paper-icon-button alt="Share event" on-tap="_onShare" icon="social:share"></paper-icon-button>
+    </section>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'x-summary-bar',
+      properties: {
+        eventName: {
+          type: String,
+          value: 'Event Name Lorem Ipsum'
+        }
+      },
+
+      _onDelete: function() {
+        this.fire('x-delete');
+      },
+
+      _onShare: function() {
+        this.fire('x-share');
+      }
+    });
+  </script>
+</dom-module>
