@@ -6,6 +6,6 @@
     "src/views/x-info.html",
     "src/views/x-sessions.html",
     "src/views/x-speakers.html",
-    "src/views/x-tickets.html",
+    "src/views/x-tickets.html"
   ]
 }
