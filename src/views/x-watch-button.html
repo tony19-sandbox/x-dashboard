@@ -1,0 +1,78 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/toggle-icon/toggle-icon.html">
+<link rel="import" href="../../bower_components/iron-checked-element-behavior/iron-checked-element-behavior.html">
+
+<dom-module id="x-watch-button">
+  <template>
+    <style>
+
+      paper-button {
+        border: solid 1px gray;
+        border-radius: 3px;
+        height: 100%;
+        width: 100%;
+      }
+
+      toggle-icon {
+        pointer-events: none;
+
+        --toggle-icon-checked: {
+          color: var(--paper-green-500);
+        };
+      }
+
+      toggle-icon:not([checked]) {
+        color: #dddddd;
+      }
+    </style>
+
+    <paper-button>
+      <toggle-icon animation="rotate" checked="{{active}}" icon="[[icon]]"></toggle-icon>
+      <span>[[_label]]</span>
+    </paper-button>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-watch-button',
+
+      properties: {
+        labelOff: {
+          type: String,
+          value: 'Off'
+        },
+
+        labelOn: {
+          type: String,
+          value: 'On'
+        },
+
+        _label: {
+          computed: '_computeLabel(active, labelOn, labelOff)'
+        },
+
+        _timestamp: {
+          type: String,
+          value: '?'
+        },
+
+        active: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      listeners: {
+        'tap': '_toggleChecked',
+      },
+
+      _toggleChecked: function(e) {
+        e.preventDefault();
+        this.active = !this.active;
+      },
+
+      _computeLabel: function(active, labelOn, labelOff) {
+        return active ? labelOn : labelOff;
+      }
+    });
+  </script>
+</dom-module>

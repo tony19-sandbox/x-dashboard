@@ -3,7 +3,9 @@
 <link rel="import" href="../../bower_components/iron-icons/social-icons.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
+<link rel="import" href="x-datastamp.html">
 <link rel="import" href="x-organizers.html">
+<link rel="import" href="x-watch-button.html">
 
 <dom-module id="x-summary-bar">
 
@@ -14,6 +16,26 @@
         display: block;
       }
 
+      ::content h1 {
+        font-size: 16px;
+        margin: 16px 0;
+        color: #212121;
+      }
+
+      x-datastamp {
+        margin: 10px;
+      }
+
+      x-organizers {
+        margin: 10px;
+      }
+
+      x-watch-button {
+        height: 50px;
+        width: 130px;
+        margin: 10px;
+      }
+
       .divider {
         border-left: solid 1px lightgray;
         margin: 20px;
@@ -22,7 +44,7 @@
 
       .summary-bar {
         padding: 2em 4em;
-        height: 200px;
+        height: 120px;
         background: white;
         align-items: center;
       }
@@ -45,20 +67,62 @@
       .summary-bar paper-icon-button:hover {
         opacity: 1;
       }
+
+      @media(max-width: 1400px) {
+        x-organizers {
+          display: none;
+        }
+      }
+
+      @media(max-width: 1075px) {
+        x-datastamp {
+          display: none;
+        }
+      }
+
+      @media(max-width: 910px) {
+        .divider,
+        #share-btn {
+          display: none;
+        }
+
+        #delete-btn {
+          margin: 0;
+        }
+
+        .summary-bar {
+          margin: 0;
+          padding: 0 10px;
+        }
+      }
+
+      @media(max-width: 730px) {
+        h2.event-title {
+          text-align: center;
+        }
+
+        #delete-btn,
+        x-watch-button {
+          display: none;
+        }
+      }
     </style>
 
     <section class="summary-bar layout horizontal wrap">
-      <h2 class="flex">
+      <h2 class="event-title flex">
         <iron-icon icon="icons:event"></iron-icon>
         [[eventName]]
       </h2>
 
       <x-organizers></x-organizers>
 
+      <x-watch-button icon="icons:autorenew" label-off="Snapshot" label-on="Live"></x-watch-button>
+      <x-datastamp timestamp="2016-07-04T01:20Z"></x-datastamp>
+
       <div class="divider"></div>
 
-      <paper-icon-button alt="Delete event" on-tap="_onDelete" icon="icons:delete"></paper-icon-button>
-      <paper-icon-button alt="Share event" on-tap="_onShare" icon="social:share"></paper-icon-button>
+      <paper-icon-button id="delete-btn" alt="Delete event" on-tap="_onDelete" icon="icons:delete"></paper-icon-button>
+      <paper-icon-button id="share-btn" alt="Share event" on-tap="_onShare" icon="social:share"></paper-icon-button>
     </section>
   </template>
 

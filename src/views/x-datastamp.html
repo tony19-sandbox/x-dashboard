@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/moment-js/moment-js.html">
+
+<dom-module id="x-datastamp">
+  <template>
+    <style>
+      h1 {
+        margin: 0;
+      }
+    </style>
+
+    <h1>Published On</h1>
+    <span>[[_timestamp]]</span>
+    <moment-js date="[[timestamp]]" format="llll" formatted-date="{{_timestamp}}" hide></moment-js>
+  </template>
+  <script>
+    Polymer({
+      is: 'x-datastamp',
+      properties: {
+        timestamp: {
+          type: String,
+          value: '?'
+        }
+      }
+    });
+  </script>
+</dom-module>
