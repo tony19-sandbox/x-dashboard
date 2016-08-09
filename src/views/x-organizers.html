@@ -72,7 +72,6 @@
       _maxUsersShown: 3,
 
       _computeUsers: function(users) {
-        console.log('users', users, 'max', this._maxUsersShown, '_users', users && users.slice(0, this._maxUsersShown));
         return users && users.slice(0, this._maxUsersShown);
       },
 
