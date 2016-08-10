@@ -1,7 +1,11 @@
-# <x-dashboard>
+# \<x-dashboard\>
+
+[![GitHub release](https://img.shields.io/github/release/tony19/x-dashboard.svg)](https://github.com/tony19/x-dashboard/releases)
+[![Build Status](https://travis-ci.org/tony19/x-dashboard.svg?branch=master)](https://travis-ci.org/tony19/x-dashboard)
 
 > [Event Dashboard](http://www.site.uplabs.com/posts/dashboard-for-event-management-project) implementation, using [Polymer CLI](https://github.com/Polymer/polymer-cli) template 
 
+<img src="https://github.com/tony19/x-user-dropdown/blob/master/images/screenshot.png" height="100">
 
 #### Quick Start
 
