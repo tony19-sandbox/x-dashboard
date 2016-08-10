@@ -1,44 +1,33 @@
-# Polymer App Toolbox - Drawer Template
+# <x-dashboard>
 
-This template is a starting point for building apps using a drawer-based
-layout.  The layout is provided by `app-layout` elements.
-
-This template, along with the `polymer-cli` toolchain, also demonstrates use
-of the "PRPL pattern" This pattern allows fast first delivery and interaction with
-the content at the initial route requested by the user, along with fast subsequent
-navigation by pre-caching the remaining components required by the app and
-progressively loading them on-demand as the user navigates through the app.
-
-The PRPL pattern, in a nutshell:
-
-* **Push** components required for the initial route
-* **Render** initial route ASAP
-* **Pre-cache** components for remaining routes
-* **Lazy-load** and progressively upgrade next routes on-demand
-
-### Setup
-
-##### Prerequisites
-
-Install [polymer-cli](https://github.com/Polymer/polymer-cli):
-
-    npm install -g polymer-cli
-
-##### Initialize project from template
-
-    mkdir my-app
-    cd my-app
-    polymer init app-drawer-template
-
-### Start the development server
-
-This command serves the app at `http://localhost:8080` and provides basic URL
-routing for the app:
-
-    polymer serve
+> [Event Dashboard](http://www.site.uplabs.com/posts/dashboard-for-event-management-project) implementation, using [Polymer CLI](https://github.com/Polymer/polymer-cli) template 
 
 
-### Build
+#### Quick Start
+
+If not already, install [Node.js](https://nodejs.org/en/) (6.x.x or newer), and
+then [Gulp](http://gulpjs.com/), [Bower](https://bower.io/), and
+[Polymer CLI](https://github.com/Polymer/polymer-cli) with:
+
+```sh
+npm install -g gulp bower polymer-cli
+```
+
+To build and open a demo, run these commands from the project's root directory:
+
+```sh
+npm install
+bower install
+polymer serve -o
+```
+
+Note the `serve` command serves the app at `http://localhost:8080` and provides
+basic URL routing for the app. Use the `-o` flag to automatically open the browser.
+
+    polymer serve [-o]
+
+
+#### Build
 
 This command performs HTML, CSS, and JS minification on the application
 dependencies, and generates a service-worker.js file with code to pre-cache the
@@ -52,10 +41,11 @@ H2/push-compatible servers or to clients that do not support H2/Push.
 
     polymer build
 
-### Test the build
+
+#### Test the build
 
 This command serves the minified version of the app in an unbundled state, as it would
-be served by a push-compatible server:
+be served by a HTTP2-push-compatible server:
 
     polymer serve build/unbundled
 
@@ -63,13 +53,18 @@ This command serves the minified version of the app generated using fragment bun
 
     polymer serve build/bundled
 
-### Extend
 
-You can extend the app by adding more elements that will be demand-loaded
-e.g. based on the route, or to progressively render non-critical sections
-of the application.  Each new demand-loaded fragment should be added to the
-list of `fragments` in the included `polymer.json` file.  This will ensure
-those components and their dependencies are added to the list of pre-cached
-components (and will have bundles created in the fallback `bundled` build).
+### Useful Polymer CLI commands
 
+```sh
+Usage
+  polymer [COMMAND] [OPTIONS...]
 
+Available Commands
+
+  build   Build the application
+  help    Shows this help message, or help for a specific command
+  lint    Lints the project
+  serve   Runs the polyserve development server
+  test    Runs web-component-tester
+```
