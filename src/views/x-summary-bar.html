@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/iron-icons/social-icons.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
 
 <link rel="import" href="x-datastamp.html">
 <link rel="import" href="x-organizers.html">
@@ -110,12 +111,15 @@
 
       <x-organizers></x-organizers>
 
-      <x-watch-button icon="icons:autorenew" label-off="Snapshot" label-on="Live"></x-watch-button>
+      <paper-tooltip for="watch-btn">Display updates</paper-tooltip>
+      <x-watch-button id="watch-btn" icon="icons:autorenew" label-off="Snapshot" label-on="Live"></x-watch-button>
       <x-datastamp timestamp="2016-07-04T01:20Z"></x-datastamp>
 
       <div class="divider"></div>
 
+      <paper-tooltip for="delete-btn">Delete event</paper-tooltip>
       <paper-icon-button id="delete-btn" alt="Delete event" on-tap="_onDelete" icon="icons:delete"></paper-icon-button>
+      <paper-tooltip for="share-btn">Share event on social media</paper-tooltip>
       <paper-icon-button id="share-btn" alt="Share event" on-tap="_onShare" icon="social:share"></paper-icon-button>
     </section>
   </template>
