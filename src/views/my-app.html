@@ -38,7 +38,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       :host {
         display: block;
-        --app-primary-color: #4285f4;
+        --summary-bar-height: 170px;
+        --summary-bar-shadow: 2px;
+        --app-toolbar-height: 64px;
+        --app-primary-color: #2eb09a;
         --app-secondary-color: black;
         font-size: 12px;
       }
@@ -47,9 +50,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --app-drawer-width: 300px;
 
         /* Shift drawer down below app-header toolbar and x-summary-bar */
-        top: calc(120px + 64px);
+        top: calc(var(--summary-bar-height) + var(--summary-bar-shadow) + var(--app-toolbar-height));
         --app-drawer-content-container: {
-          padding: 0;
+          padding-top: 30px;
         };
       }
 
@@ -114,7 +117,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       x-summary-bar {
-        height: 120px;
+        height: var(--summary-bar-height);
+        border-bottom: solid var(--summary-bar-shadow) lightgray;
       }
     </style>
 
