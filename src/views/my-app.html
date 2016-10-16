@@ -46,8 +46,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app-drawer {
         --app-drawer-width: 300px;
 
-        /* Shift drawer down below app-header toolbar */
-        top: 64px;
+        /* Shift drawer down below app-header toolbar and x-summary-bar */
+        top: calc(120px + 64px);
         --app-drawer-content-container: {
           padding: 0;
         };
@@ -112,6 +112,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           text-transform: none;
         };
       }
+
+      x-summary-bar {
+        height: 120px;
+      }
     </style>
 
     <app-location route="{{route}}"></app-location>
@@ -132,6 +136,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <paper-button class="create-event" suffix>Create Event</paper-button>
         </app-toolbar>
       </app-header>
+
+      <x-summary-bar></x-summary-bar>
 
       <app-drawer-layout narrow="{{narrow}}">
         <app-drawer id="drawer">
@@ -166,8 +172,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-drawer>
 
         <div>
-          <x-summary-bar></x-summary-bar>
-
           <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
             <x-dashboard name="dashboard"></x-dashboard>
             <x-info name="info"></x-info>
