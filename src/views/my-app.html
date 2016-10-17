@@ -132,8 +132,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       paper-button.create-event {
+        background: orange;
         --paper-button: {
-          background: orange;
+          min-width: 111px;
+          max-height: 46px;
           padding: 11px;
           margin: 0;
           text-transform: none;
@@ -147,6 +149,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       x-summary-bar {
         height: var(--summary-bar-height);
         border-bottom: solid var(--summary-bar-shadow) lightgray;
+      }
+
+      :host([narrow]) paper-button.create-event {
+        --paper-button: {
+          min-width: 48px;
+          width: 48px;
+          margin: 0;
+        };
       }
 
       :host([narrow]) x-user-dropdown {
@@ -193,7 +203,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="divider"></div>
           <x-user-dropdown name="John Smith"
                            src="https://randomuser.me/api/portraits/men/22.jpg" suffix></x-user-dropdown>
-          <paper-button class="create-event" suffix>Create Event</paper-button>
+          <paper-button class="create-event" suffix>
+            <span hidden$="[[narrow]]">Create Event</span>
+            <iron-icon hidden$="[[!narrow]]" icon="icons:event"></iron-icon>
+          </paper-button>
         </app-toolbar>
       </app-header>
 
