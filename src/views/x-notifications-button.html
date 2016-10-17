@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="x-notifications-button">
+
+  <template>
+
+    <style>
+      :host {
+        display: block;
+        height: 100%;
+      }
+
+      #badge-container {
+        height: 20%;
+      }
+
+      paper-icon-button {
+        opacity: 0.5;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    </style>
+
+    <div class="container">
+      <paper-icon-button icon="vaadin-icons:bell-o"></paper-icon-button>
+
+      <!-- Stuff badge in sized container to constrain calculated offsets.
+           Otherwise, the badge is a bit too high. -->
+      <div id="badge-container" hidden$="[[!_hasCount(count)]]">
+        <paper-badge label="[[count]]"></paper-badge>
+      </div>
+    </div>
+  </template>
+
+  <script>
+
+    Polymer({
+      is: 'x-notifications-button',
+      properties: {
+        count: {
+          type: Number,
+          value: 0
+        }
+      },
+
+      _hasCount: function(count) {
+        return count && Number(count) > 0;
+      }
+    });
+
+  </script>
+
+</dom-module>

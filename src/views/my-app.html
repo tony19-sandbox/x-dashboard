@@ -29,6 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/vaadin-icons/vaadin-icons.html">
 
 <link rel="import" href="x-summary-bar.html">
+<link rel="import" href="x-notifications-button.html">
 
 <dom-module id="my-app">
 
@@ -66,6 +67,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       app-toolbar {
         --app-toolbar-font-size: 16px;
+      }
+
+      div.divider {
+        opacity: 0.5;
+        border-left: solid 1px lightgray;
+        margin: 0 20px;
+        height: 100%;
       }
 
       .menu {
@@ -135,6 +143,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>
           <paper-icon-button icon="menu" hidden$="{{!narrow}}" on-tap="_toggleDrawer"></paper-icon-button>
           <div title></div>
+          <div class="divider"></div>
+          <x-notifications-button count="2"></x-notifications-button>
+          <div class="divider"></div>
           <x-user-dropdown name="John Smith"
                            src="https://randomuser.me/api/portraits/men/22.jpg" suffix></x-user-dropdown>
           <paper-button class="create-event" suffix>Create Event</paper-button>

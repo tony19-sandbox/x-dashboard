@@ -22,7 +22,8 @@
     "vaadin-icons": "^1.0.1",
     "paper-tooltip": "^1.1.2",
     "toggle-icon": "^1.1.2",
-    "moment-js": "^0.4.1"
+    "moment-js": "^0.4.1",
+    "paper-badge": "^1.1.4"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
